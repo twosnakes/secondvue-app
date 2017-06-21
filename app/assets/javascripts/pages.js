@@ -6,17 +6,33 @@ document.addEventListener("DOMContentLoaded", function(event) {
       message2: 'Have Fun',
       message3: 'Eat Pizza',
       message4: 'Go To The Beach',
-    tasks: [
-                "Drink a cocktail",
-                "Take a nap",
-                "Watch a movie"
-                ],
+    tasks: [{
+                text: "Drink a cocktail",
+                completed: true
+              },
+              { 
+                text:"Take a nap",
+                completed: false
+              },
+              {
+                text:"Watch a movie",
+                completed: true
+                }],
     newTask: ''
     },
     methods: {
-      addTask: function() {
+      toggleTask: function(task) {
+          task.textVisible = !task.textVisible;
+      },
+      
+        addTask: function() {
         if (this.newTask !== '') {
-        this.tasks.push(this.newTask);
+          var params = {
+                           text: this.newTask,
+                           completed: false
+                          
+                          };
+        this.tasks.push(params);
         this.newTask = '';
         }
       },
